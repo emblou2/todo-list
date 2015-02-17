@@ -1,12 +1,12 @@
 {
-  "name": "base-frontend-project",
+  "name": "Emily To-Do",
   "version": "0.0.1",
-  "description": "Bloc skeleton project for a single page application",
+  "description": "Emily's to-do list application",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
   },
-  "author": "Bloc and Nick Ferraro",
+  "author": "Emily Blanchard",
   "license": "ISC",
   "dependencies": {
     "hapi": "^7.5.0",
