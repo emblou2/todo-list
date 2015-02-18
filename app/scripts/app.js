@@ -5,9 +5,18 @@
 4. Define routes (put above controller)
 5. Use angular's $interval
 */
-var app = angular.module("todoApp", ["firebase"])
+var app = angular.module("todoApp", ["firebase"], ['ui.router'])
 
-// set up routes with .config
+.config(['$stateProvider', '$locationProvider', function($stateProvider, $locationProvider) {
+    $locationProvider.html5Mode(true);
+
+    $stateProvider.state('landing', {
+        url: '/',
+        controller: 'Landing.controller',
+        templateUrl: '/templates/landing.html'
+    });
+}]);
+
 
 app.controller("TodoCtrl", ["$scope", "$firebase",
   function($scope, $firebase) {
