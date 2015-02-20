@@ -7,29 +7,48 @@
 */
 var app = angular.module("todoApp", ["firebase", 'ui.router'])
 
-    .config(function ($stateProvider, $urlRouterProvider) {
+    .config(function ($stateProvider, $locationProvider) {
+        $locationProvider.html5Mode(true);
         $stateProvider
             .state('home', {
                 url: '/home',
                 templateUrl: 'templates/home.html'
             })
-            .state('list', {
-                url: '/list',
-                templateUrl: 'templates/list.html',
+            .state('history', {
+                url: '/history',
+                templateUrl: 'templates/history.html',
                 controller: 'TodoCtrl'    
             })
 
     })
 
-app.controller("TodoCtrl", ["$scope", "$firebase",
-  function($scope, $firebase) {
+app.controller("TodoCtrl", ["$scope", "$firebase", "$interval",
+    function($scope, $firebase, $interval) { 
+        $scope.callAtInterval = function() { 
+            console.log("Interval works"); 
+        } 
+        $interval( function (){ $scope.callAtInterval }, 3000);
+    });
+        
+
+ 
+
+    
+
+        
+
+
     var ref = new Firebase("https://popping-torch-9799.firebaseio.com/");
     // create an AngularFire reference to the data
     var sync = $firebase(ref);
     // download the data into a local object
     $scope.data = sync.$asObject();
+
+
+
     $scope.textTest = "Hello!";
-    // var textTest = "Hello!"
+     //var textTest = "Hello!"
+
 
     $scope.todos = [
     {done: false, text: 'first', archived: true},
@@ -45,5 +64,7 @@ app.controller("TodoCtrl", ["$scope", "$firebase",
         $scope.todoText = '';
     };
 
-  }
+        }
 ]);
+
+ 
