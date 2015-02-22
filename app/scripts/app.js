@@ -18,6 +18,15 @@ var app = angular.module("todoApp", ['firebase', 'ui.router'])
             url: '/history',
             templateUrl: 'templates/history.html'   
         })
+        .state('active'), {
+            url: '/active',
+            templateUrl: 'templates/active.html'
+        }
+        .state('/expired'), {
+            url: '/expired',
+            templateUrl: 'templates/expired.html'
+        }
+        
 })
 
 app.controller("TodoCtrl", ["$scope", "$firebase", "$interval", function($scope, $firebase, $interval) { 
