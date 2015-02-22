@@ -54,6 +54,7 @@ app.controller("TodoCtrl", ["$scope", "$firebase", "$interval", function($scope,
         $scope.todoText = '';
     };
 
+<<<<<<< HEAD
     $scope.callAtInterval = function() { 
         console.log("Interval works"); 
     };
@@ -67,5 +68,14 @@ app.controller("TodoCtrl", ["$scope", "$firebase", "$interval", function($scope,
 
 
 
+=======
+        }
+        $scope.clearCompleted = function() {
+            $scope.todos = $scope.todos.filter(function(item) {
+                return !item.done;
+            });
+        }
+]);
+>>>>>>> functions
 
  
