@@ -45,6 +45,15 @@ app.controller("TodoCtrl", ["$scope", "$firebase", "$interval", function($scope,
         {done: false, text: 'second', archived: false}
     ];
 
+    $scope.completedTodos = [];
+    function isCompleted() {
+        for (i = 0; i< $scope.todos.length; i++){
+            if($scope.todo[i].done){
+                $scope.completedTodos.push($scope.todos[i]);
+            }
+        }
+    }
+
     $scope.addTodo = function() {
         var newTodo = {
             done: false,
@@ -54,7 +63,7 @@ app.controller("TodoCtrl", ["$scope", "$firebase", "$interval", function($scope,
         $scope.todoText = '';
     };
 
-<<<<<<< HEAD
+
     $scope.callAtInterval = function() { 
         console.log("Interval works"); 
     };
@@ -62,20 +71,4 @@ app.controller("TodoCtrl", ["$scope", "$firebase", "$interval", function($scope,
     $interval( function (){ $scope.callAtInterval(); }, 300, [3]);
 }]);
 
-    
-
-        
-
-
-
-=======
-        }
-        $scope.clearCompleted = function() {
-            $scope.todos = $scope.todos.filter(function(item) {
-                return !item.done;
-            });
-        }
-]);
->>>>>>> functions
-
- 
+       
