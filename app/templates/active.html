@@ -1,5 +1,19 @@
-<div ng-repeat="todo in todos" ng-cloak>
-      {{todo.text}}
-      <input type="checkbox" ng-model="todo.done"/>
-      <input type="text" ng-model="todo.text"/>
-</div>
+<div>
+  <h3>Current To Do List</h3>
+    <form class="form-inline" ng submit="addTodo(newTodo)">
+      <div class ="form-group">
+        <input type="text" class="form-control" placeholder="What needs to be done?" ng-model="newTodo">
+      </div>
+      <button type="submit" class="btn btn-default">add</button>
+    </form>
+    <div ng-repeat="todo in todos" ng-cloak>
+      <ul class="list-group">
+        <li class="list-group-item" 
+        {{todo.text}}
+        <input type="checkbox" class="checkbox" ng-click="todo.done">
+        </li>
+      </ul>
+    </div>
+  </div>
+
+
