@@ -13,21 +13,21 @@ var app = angular.module("todoApp", ['firebase', 'ui.router'])
         .state('home', {
             url: '/home',
             templateUrl: 'templates/home.html'
-        })
+         })
         .state('history', {
             url: '/history',
             templateUrl: 'templates/history.html'   
-        })
-        .state('active'), {
+         })
+        .state('active', {
             url: '/active',
             templateUrl: 'templates/active.html'
-        }
-        .state('/expired'), {
+         })
+        .state('expired', {
             url: '/expired',
             templateUrl: 'templates/expired.html'
-        }
+         })
         
-})
+    });
 
 app.controller("TodoCtrl", ["$scope", "$firebase", "$interval", function($scope, $firebase, $interval) { 
     console.log("I'm the controller!");
