@@ -1,1 +1,10 @@
-<h1>Testing!</h1>
+<div>
+  <h1>History</h1>
+    <div ng-repeat="todo in todos">
+      <ul class="list-group">
+        <li class="list-group-item" ng-show="todo.done">
+          {{todo.text}}
+          <input type="checkbox" class="checkbox"></li>
+      </ul>
+    </div>
+</div>

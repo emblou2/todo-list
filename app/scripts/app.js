@@ -67,6 +67,7 @@ app.controller("TodoCtrl", ["$scope", "$firebase", "$interval", function($scope,
     };
 
 
+
     $scope.callAtInterval = function() { 
         console.log("Interval works"); 
     };
