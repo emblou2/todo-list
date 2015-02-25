@@ -37,8 +37,7 @@ app.controller("TodoCtrl", ["$scope", "$firebase", "$interval", function($scope,
     // download the data into a local object
     $scope.data = sync.$asObject();
 
-    $scope.textTest = "Hello!";
-     //var textTest = "Hello!"
+    $scope.newTodo = '';
 
     $scope.todos = [
         {done: false, text: 'first', archived: true},
@@ -54,13 +53,17 @@ app.controller("TodoCtrl", ["$scope", "$firebase", "$interval", function($scope,
         }
     }
 
-    $scope.addTodo = function() {
-        var newTodo = {
+    $scope.addTodo = function(todo) {
+        console.log("Todo is", todo);
+        var totallyNewTodo = {
             done: false,
-            text: $scope.todoText
+            text: todo,
+            expired: false,
+            created: // new date time object
         };
-        $scope.todos.push(newTodo);
-        $scope.todoText = '';
+        $scope.todos.push(totallyNewTodo);
+        // $scope.newTodo = '';
+        console.log("Todos", $scope.todos);
     };
 
 

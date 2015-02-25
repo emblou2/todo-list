@@ -1,6 +1,6 @@
 <div>
   <h3>Current To Do List</h3>
-    <form class="form-inline" ng submit="addTodo(newTodo)">
+    <form class="form-inline" ng-submit="addTodo(newTodo)">
       <div class ="form-group">
         <input type="text" class="form-control" placeholder="What needs doing?" ng-model="newTodo">
       </div>
@@ -8,7 +8,7 @@
     </form>
     <div ng-repeat="todo in todos" ng-cloak>
       <ul class="list-group">
-        <li class="list-group-item" 
+        <li class="list-group-item"> 
         {{todo.text}}
         <input type="checkbox" class="checkbox" ng-click="todo.done">
         </li>
