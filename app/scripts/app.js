@@ -59,7 +59,7 @@ app.controller("TodoCtrl", ["$scope", "$firebase", "$interval", function($scope,
             done: false,
             text: todo,
             expired: false,
-            created: Firebase.ServiceValue.TIMESTAMP
+            created: Firebase.ServerValue.TIMESTAMP
         };
         $scope.todos.push(totallyNewTodo);
         // $scope.newTodo = '';
