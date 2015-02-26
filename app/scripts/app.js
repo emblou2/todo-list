@@ -51,7 +51,7 @@ app.controller("TodoCtrl", ["$scope", "$firebase", "$interval", function($scope,
                 $scope.completedTodos.push($scope.todos[i]);
             }
         }
-    }
+    };
 
     $scope.addTodo = function(todo) {
         console.log("Todo is", todo);

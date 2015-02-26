@@ -1,8 +1,8 @@
 <div>
-  <h1>History</h1>
+  <h1> Completed To Do History</h1>
     <div ng-repeat="todo in todos">
       <ul class="list-group">
-        <li class="list-group-item" ng-show="todo.done">
+        <li class="list-group-item" ng-show="completedTodos">
           {{todo.text}}
           <input type="checkbox" class="checkbox"></li>
       </ul>

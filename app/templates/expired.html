@@ -1,0 +1,10 @@
+<div>
+  <h1>Expired To Do Items</h1>
+    <div ng-repeat="todo in todos">
+      <ul class="list-group">
+        <li class="list-group-item" ng-show="todo.expired">
+          {{todo.text}}
+          <input type="checkbox" class="checkbox"></li>
+      </ul>
+    </div>
+</div>
