@@ -63,7 +63,7 @@ app.controller("TodoCtrl", ["$scope", "$firebase", "$interval", function($scope,
         }
         for (i = 0; i< $scope.todos.length; i++){
             if($scope.todo[i].expired){
-                $scope.expiredTodos.push(scope.todos[i[]);
+                $scope.expiredTodos.push(scope.todos[i]);
             }
         }
     };
