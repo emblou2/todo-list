@@ -41,7 +41,8 @@ app.controller("TodoCtrl", ["$scope", "$firebase", "$interval", function($scope,
 
     $scope.todos = [
         {done: false, text: 'first', expired: false},
-        {done: false, text: 'second', expired: false}
+        {done: false, text: 'second', expired: true},
+        {done: true, text: 'third', expired: false}
     ];
 
     $scope.completedTodos = [];
@@ -49,6 +50,7 @@ app.controller("TodoCtrl", ["$scope", "$firebase", "$interval", function($scope,
         for (i = 0; i< $scope.todos.length; i++){
             if($scope.todo[i].done){
                 $scope.completedTodos.push($scope.todos[i]);
+                todos.$save(todo);
             }
         }
     };
@@ -64,6 +66,7 @@ app.controller("TodoCtrl", ["$scope", "$firebase", "$interval", function($scope,
         for (i = 0; i< $scope.todos.length; i++){
             if($scope.todo[i].expired){
                 $scope.expiredTodos.push(scope.todos[i]);
+                todos.$save(todo);
             }
         }
     };
@@ -77,6 +80,7 @@ app.controller("TodoCtrl", ["$scope", "$firebase", "$interval", function($scope,
             created: Firebase.ServerValue.TIMESTAMP
         };
         $scope.todos.push(totallyNewTodo);
+        todos$save(todo);
           //$scope.newTodo = '';
         console.log("Todos", $scope.todos);
     };
