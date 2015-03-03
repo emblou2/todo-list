@@ -1,8 +1,8 @@
 <div>
   <h1>Current To Do List</h1>
-    <form class="form-inline" ng-submit="addTodo(newTodo)">
+    <form class="form-inline" ng-submit="addTodo(ntodo.text)">
       <div class ="form-group">
-        <input type="text" class="form-control" placeholder="What needs doing?" ng-model="newTodo">
+        <input type="text" class="form-control" placeholder="What needs doing?" ng-model="todo.text">
       </div>
       <button type="submit" class="btn btn-default">add</button>
     </form>
