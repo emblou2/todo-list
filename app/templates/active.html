@@ -1,10 +1,10 @@
 <div>
   <h1>Current To Do List</h1>
-    <form class="form-inline" ng-submit="addTodo(ntodo.text)">
+    <form class="form-inline" ng-submit="addTodo()">
       <div class ="form-group">
         <input type="text" class="form-control" placeholder="What needs doing?" ng-model="todo.text">
       </div>
-      <button type="submit" class="btn btn-default">add</button>
+      <button type="submit" class="btn btn-default" ng-disabled="!todo.text">add</button>
     </form>
     <div ng-repeat="todo in todos" ng-cloak>
       <ul class="list-group">
@@ -15,5 +15,3 @@
       </ul>
     </div>
   </div>
-
-

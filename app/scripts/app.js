@@ -36,7 +36,7 @@ app.controller("TodoCtrl", ["$scope", "$firebase", "$interval", function($scope,
     var sync = $firebase(ref);
     // download the data into a local object
     $scope.data = sync.$asObject();
-    $scope.todo = { text: "" }
+    $scope.todo = { text: "" };
 
     $scope.todos = [
         {done: false, text: 'first', expired: false},
