@@ -84,6 +84,12 @@ app.controller("TodoCtrl", ["$scope", "$firebase", "$interval", function($scope,
 
     };
 
+    $scope.clearCompleted = function(){
+        $scope.todos = scope.todos.filter(function(item){
+            return !todo.done
+        })
+    };
+
 
 
     $scope.callAtInterval = function() { 
