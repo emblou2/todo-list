@@ -3,6 +3,12 @@
     <form class="form-inline" ng-submit="addTodo()">
       <div class ="form-group">
         <input type="text" class="form-control" placeholder="What needs doing?" ng-model="todo.text">
+
+        <select ng-model="priority">
+          <option value='normal'>Normal</option>
+          <option value='medium'>Medium</option>
+          <option value='high'>High</option>
+        </select>
       </div>
       <button type="submit" class="btn btn-default" ng-disabled="!todo.text">add</button>
     </form>
@@ -12,7 +18,8 @@
         <li class="list-group-item"> 
    
         <input type="checkbox" class="checkbox" ng-click="todo.done" ng-model="todo.done">
-        <span ng-class="{'done' :todo.done}">{{todo.text}}</span>
+        <span ng-class="{'done':todo.done}">{{todo.text}}</span>
+        <span class="priority {{todo.priority}}"{{todo.priority}}</span>
         </li>
       </ul>
     </div>

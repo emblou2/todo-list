@@ -2,3 +2,25 @@
   text-decoration: line-through;
   color: #ddd;
 }
+
+.priority {
+  width: 10%;
+  height: 20px;
+  display: inline-block;
+  position: absolute;
+  right: 25px;
+  top: 15px;
+  cursor: pointer;
+  background-color: #fff;
+  border: 1px solid #777;
+  text-align: center;
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 1.4em;
+}
+.priority.medium {
+  background-color: #FFCB00;
+}
+.priority.high {
+  background-color: red;
+}

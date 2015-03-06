@@ -37,7 +37,7 @@ app.controller("TodoCtrl", ["$scope", "$firebase", "$interval", function($scope,
     // download the data into a local object
     $scope.data = sync.$asObject();
     $scope.todo = { text: "" };
-
+    $scope.priority = 'normal';
     $scope.todos = [
         {done: false, text: 'first', expired: false},
         {done: false, text: 'second', expired: true},
@@ -59,7 +59,7 @@ app.controller("TodoCtrl", ["$scope", "$firebase", "$interval", function($scope,
         var today = new Date()
         var now = today.getTime();
         var todo = todo.$getRecord(id);
-        if (now - todo.created >= 10000) {
+        if (now - todo.created >= 5000) {
             expired = true;
         }
         for (i = 0; i< $scope.todos.length; i++){
@@ -77,16 +77,20 @@ app.controller("TodoCtrl", ["$scope", "$firebase", "$interval", function($scope,
             text: $scope.todo.text,
             expired: false,
             created: Firebase.ServerValue.TIMESTAMP
+            priority: $scope.priority
+        
         };
         $scope.todos.push($scope.totallyNewTodo);
         // todos$save(todo);
         $scope.todo.text = "";
+        $scope.priority = 'normal';
 
     };
 
     $scope.clearCompleted = function(){
-        $scope.todos = scope.todos.filter(function(item){
-            return !todo.done
+        $scope.todos = $scope.todos.filter(function(item){
+            return !item.done
+            
         })
     };
 
