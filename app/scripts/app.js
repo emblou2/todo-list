@@ -36,71 +36,55 @@ app.controller("TodoCtrl", ["$scope", "$firebase", "$interval", function($scope,
     var sync = $firebase(ref);
     // download the data into a local object
     $scope.data = sync.$asObject();
-    $scope.todo = { text: "" };
-    $scope.priority = 'normal';
+    $scope.todo = { text: "", priority: "normal" };
+    $scope.priorities = [{type:'normal'}, {type:'medium'}, {type:'high'}];
     $scope.todos = [
-        {done: false, text: 'first', expired: false},
-        {done: false, text: 'second', expired: true},
-        {done: true, text: 'third', expired: false}
+        {done: false, text: 'first', expired: false, priority: 'high', created: new Date()},
+        {done: false, text: 'second', expired: true, priority: 'medium', created: new Date()},
+        {done: true, text: 'third', expired: false, priority: 'low', created: new Date()}
     ];
 
-    $scope.completedTodos = [];
-    function isCompleted() {
-        for (i = 0; i< $scope.todos.length; i++){
-            if($scope.todo[i].done){
-                $scope.completedTodos.push($scope.todos[i]);
-                todos.$save(todo);
-            }
-        }
-    };
-
-    $scope.expiredTodos = [];
-    function isExpired() {
+    $scope.isExpired = function() {
         var today = new Date()
         var now = today.getTime();
-        var todo = todo.$getRecord(id);
-        if (now - todo.created >= 5000) {
-            expired = true;
-        }
-        for (i = 0; i< $scope.todos.length; i++){
-            if($scope.todo[i].expired){
-                $scope.expiredTodos.push(scope.todos[i]);
-                todos.$save(todo);
+        // var todo = todo.$getRecord(id);
+        // if more than 5 seconds old, expire it
+
+        $scope.todos.forEach(function(todo){
+            var createdDate = todo.created,
+                createdTime = createdDate.getTime();
+            console.log(now - createdTime);
+
+            // if todo was created more than five seconds ago.. ( we can change this time later )
+            if ((now - createdTime) >= 5000){
+                todo.expired = true;
             }
-        }
+        });
     };
 
     $scope.addTodo = function() {
-        console.log($scope.todo.text);
         $scope.totallyNewTodo = {
             done: false,
             text: $scope.todo.text,
             expired: false,
-            created: Firebase.ServerValue.TIMESTAMP
-            priority: $scope.priority
+            created: new Date(),
+            // created: Firebase.ServerValue.TIMESTAMP,
+            priority: $scope.todo.priority
         
         };
         $scope.todos.push($scope.totallyNewTodo);
         // todos$save(todo);
         $scope.todo.text = "";
-        $scope.priority = 'normal';
+        $scope.todo.priority = 'normal';
 
     };
-
-    $scope.clearCompleted = function(){
-        $scope.todos = $scope.todos.filter(function(item){
-            return !item.done
-            
-        })
-    };
-
 
 
     $scope.callAtInterval = function() { 
         console.log("Interval works"); 
     };
 
-    $interval( function (){ $scope.callAtInterval(); }, 300, [3]);
+    $interval( function (){ $scope.isExpired(); }, 10000, [5]);
 }]);
 
        
